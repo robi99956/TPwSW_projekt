@@ -1,1 +1,1 @@
-Gałąź główna dla programowej części projektu.
+Wymagany dostęp do portu szeregowego, by GUI działało prawidłowo 
