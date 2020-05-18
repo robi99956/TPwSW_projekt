@@ -11,7 +11,7 @@
 void setup() {
 
 	//A to lewy, a B to prawy
-	//Sygna³ PWM w zakresie (0,255)
+	//SygnaÂ³ PWM w zakresie (0,255)
 
 	  pinMode(enA, OUTPUT);
 	  pinMode(enB, OUTPUT);
@@ -23,21 +23,21 @@ void setup() {
 
 void loop() {
 
-	uint8_t powerA = 30;
-	uint8_t powerB = 50;
+	int8_t powerA = 30;
+	int8_t powerB = 50;
 
-    void jedz(uint8_t powerA,uint8_t powerB);
+    void jedz(int8_t powerA,int8_t powerB);
 
 }
 
-void jedz(uint8_t procentprawy,uint8_t procentlewy){
+void jedz(int8_t procentprawy,int8_t procentlewy){
 
 
 	if(procentprawy<0 )
 	{
-		//JAZDA DO TY£U
+		//JAZDA DO TYÂ£U
 
-		    //Motor B do ty³u
+		    //Motor B do tyÂ³u
 		    digitalWrite(in3, HIGH);
 		    digitalWrite(in4, LOW);
 	}
@@ -49,7 +49,7 @@ void jedz(uint8_t procentprawy,uint8_t procentlewy){
 	}
 	if(procentlewy<0 )
 	{
-	    //Motor A do ty³
+	    //Motor A do tyÂ³
 	    digitalWrite(in1, HIGH);
 	    digitalWrite(in2, LOW);
 
@@ -60,8 +60,12 @@ void jedz(uint8_t procentprawy,uint8_t procentlewy){
 	    digitalWrite(in1, LOW);
 	    digitalWrite(in2, HIGH);
 	}
-	analogWrite(enA,abs(procentprawy)*255);
-	analogWrite(enB,abs(procentlewy)*255);
+	
+	uint8_t PWM_prawego=abs(procentprawy)/100*255;
+	uint8_t PWM_lewego=abs(procentlewy)/100*255;
+	
+	analogWrite(enA,PWM_prawego);
+	analogWrite(enB,PWM_lewego);
 
 }
 
